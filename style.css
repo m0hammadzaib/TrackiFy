@@ -1,0 +1,251 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:  "Lilita One", sans-serif;
+    background-color: #252525;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+ body, button , input, select{
+    transition: all 0.3s ease;
+ }
+
+ header{
+   text-align: center;
+    margin: 0.5rem 0;
+ }
+
+  header h1 {
+    margin-top: 10px;
+    line-height: 0.7;
+    font-size: 4.7rem;
+    font-weight: lighter ;
+    color: rgb(132, 132, 132); 
+
+background: linear-gradient(to bottom, #ddd, #555);
+  color: transparent;
+  background-clip: text;
+  text-shadow: 
+      -1px -1px 0 #b4b4b4,
+     1px -1px 0 #3e3e3e,
+    -1px  1px 0 #4a4a4a,
+     1px  1px 0 #4a4a4a,
+     
+     2px  1px 2px rgba(62, 62, 62, 0.7);
+  }
+  header .sub-heading{
+    font-family: "Kalam", cursive;
+    font-size: 1.6rem;
+    color: #D7CA77;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+#add-btn{
+  margin-top: 100px;
+  padding: 7px 55px;
+  border: none;
+  background-color: #582984;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+}
+#add-btn:hover{
+  background-color:#492669;
+}
+
+.habit-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 85%;
+  max-width: 800px; 
+  margin-top: 2rem;
+}
+.habit-card {
+  width: 100%;
+  background: #222222;
+  border-radius: 20px;
+  padding: 1rem 1.4rem;
+  box-shadow: 1px 1px 2px #000000,
+   -1px 1px 1px #1e1e1e,
+   -1px 1px 1px #696969,
+   -1px 1px 4px #1a1a1a;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.habit-top{
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.habit-top h3{
+  flex-shrink: 0;
+  color: #c9c9c9;
+  font-size: 2rem;
+   text-shadow: 
+      -1px -1px 0 #131313,
+     1px -1px 0 #4f4f4f,
+    -1px  1px 1px #242424,
+     1px  1px 1px #030303,
+     
+     2px  1px 2px rgba(0, 0, 0, 0.7);
+
+}
+.category{
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  background-color: blue;
+  padding: 3px 10px ;
+  border-radius: 20px;
+}
+.habit-days{
+  display: flex;
+  justify-content: space-between;
+}
+.day{
+  font-weight: bolder;
+  border: none;
+  background-color: #3a3a3a;
+  padding: 8px  12px;
+  border-radius: 5px;
+  color: rgb(219, 219, 219);
+}
+.progress-bar{
+  background-color: #777777;
+  width: 100%;
+  height: 8px;
+  border-radius: 10px;
+}
+.progress{
+   background-color: #00afaf;
+  width: 40%;
+  height: 8px;
+  border-radius: 10px;
+}
+.habit-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.streak{
+  color: rgb(109, 21, 21);
+}
+.actions{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.edit{
+  background-color: #f4c542;
+  color: white;
+  border-radius: 14px;
+  padding: 1px 17px;
+  border: none;
+}
+.delete{
+  background-color: #e53935;
+  color: white;
+  border-radius: 14px;
+  padding: 1px 17px;
+  border: none;
+}
+#toggle-btn{
+ border-radius: 40px;
+ bottom: 5px;
+ left: 15px;
+ position: fixed;
+}
+.modals{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+.modal-content{
+  background-color: #2b2b2b;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  width: 350px;
+  text-align: center;
+  border: 1px solid #3a3a3a;
+}
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: bold;
+}
+#habit-form{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.4rem;
+}
+#habit-form label {
+  font-size: 0.9rem;
+  color: #aaa; 
+}
+#habit-form input,
+#habit-form select {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #555;
+  background: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+#habit-form button {
+  align-self: center;
+  margin-top: 1rem;
+  background: #7a42f4;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 40%;
+}
+#habit-form button:hover {
+  background: #5e32bd; 
+}
+
+/* for floating add button */
+
+#add-btn.floating {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  margin: 0;   
+  padding: 18px 24px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+
+  
+
