@@ -4,7 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TrackiFy</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chewy&family=Gaegu&family=Jua&family=Kalam:wght@300;400;700&family=Klee+One&family=Lilita+One&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chewy&family=Gaegu&family=Jua&family=Kalam:wght@300;400;700&family=Klee+One&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -12,25 +19,69 @@
         <h1>TrackiFy</h1>
         <div class="sub-heading">Track your habits, crush your goals</div>
     </header>
-    <main>
-        <button></button>
-        <div class="habit-container"></div>
-    </main>
-    <div class="modals">
-        <form>
-            <label for="habit">Habit Name</label>
-            <input type="text" id="habit" name="habit" placeholder="e.g. Drink water, Read 20 pages">
-            
-            <label for="category">Category</label>
-            <select name="category" id="category">
-                <option value="Health">Health</option>
-                <option value="Study">Study</option>
-                <option value="Personal">Personal</option>
-            </select>
 
-        <button type="submit" class="add-btn">Add</button>
-        </form>
+    <main>
+
+        <button id="add-btn"><img width="65" src="plus.png" alt=""></button>
+        <label for="add-btn">Add Habit</label>
+
+        <div class="habit-container">
+            <div class="habit-card">
+                <div class="habit-top">
+                    <h3>Drink Water</h3>
+                    <span class="category">Health</span>
+                </div>
+                <div class="habit-days">
+                    <button class="day" >M</button>
+                    <button class="day" >T</button>
+                    <button class="day" >W</button>
+                    <button class="day" >T</button>
+                    <button class="day" >F</button>
+                    <button class="day" >S</button>
+                    <button class="day" >S</button>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress">
+                    </div>
+                </div>
+                        
+                        <div class="habit-bottom">
+                            <span class="streak">Streak :</span>
+                            <div class="actions">
+                                <button class="edit"><img width="25" src="edit.png" alt=""></button>
+                                <button class="delete"><img width="25"  src="delete.png" alt=""></button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </main>
+
+    <div class="modals">
+        <div class="modal-content">
+            <h2>Add New Habit</h2>
+            <form id="habit-form">
+                <label for="habit-name">Habit Name</label>
+                <input id="habit-name" type="text">
+
+                <label for="category">Category</label>
+                <select name="Category" id="category">
+                    <option value="Health">Health</option>
+                    <option value="Study">Study</option>
+                    <option value="Personal">Personal</option>
+                </select>
+                <button type="submit">Add</button>
+            </form>
+        </div>
     </div>
-    
+
+   <span id="toggle-btn"><img width="60" src="switch.png" alt=""></span>
+
+
 </body>
+
 </html>
