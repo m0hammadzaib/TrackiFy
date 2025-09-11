@@ -4,27 +4,44 @@ modalContent = document.querySelector(".modal-content");
 habitForm = document.getElementById("habit-form");
 habitNameInput = document.getElementById("habit-name");
 habitContainer = document.querySelector(".habit-container");
+addlabel = document.getElementById("label1");
+categorySelect = document.getElementById("category");
+
+let editingCard = null;
+
+checkHabits();
 
 addBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
+    modal.style.display = "flex";
 });
 
 habitForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  let name = habitNameInput.value;
-  let category = document.getElementById("category").value;
+    let name = habitNameInput.value;
+    let category = document.getElementById("category").value;
 
-  if (name.trim() !== "") {
-    createhabitcard(name, category);
-  }
+    if (name === "") return;
 
-  habitNameInput.value = "";
-  modal.style.display = "none";
+    if (editingCard) {
+        // update existing card
+        editingCard.querySelector("h3").textContent = name;
+        editingCard.querySelector(".category").textContent = category;
+        editingCard = null; // reset editing
+    } else {
+        // create new card
+        createhabitcard(name, category);
+    }
+
+    habitForm.reset();
+    modal.style.display = "none";
+
+    checkHabits();
+
 });
 
 function createhabitcard(name, category) {
-  let html = `
+    let html = `
     <div class="habit-card">
       <div class="habit-top">
         <h3>${name}</h3>
@@ -51,5 +68,68 @@ function createhabitcard(name, category) {
       </div>
     </div>`;
 
-  habitContainer.insertAdjacentHTML("beforeend", html);
+    habitContainer.insertAdjacentHTML("beforeend", html);
+    
+    checkHabits();
+  }
+  
+  function checkHabits() {
+   if (habitContainer.children.length === 0) {
+     addBtn.classList.remove("floating"); 
+     addlabel.style.display = "block";   
+   } else {
+     addBtn.classList.add("floating"); 
+     addlabel.style.display = "none";  
+   }
+ }
+
+habitContainer.addEventListener("click", (e) => {
+    const card = e.target.closest(".habit-card");
+    if (e.target.closest(".delete")) {
+        card.remove();
+        checkHabits();
+    }
+    else if (e.target.closest(".edit")) {
+        editingCard = card;
+         
+
+        habitNameInput.value = card.querySelector("h3").textContent;
+        categorySelect.value = card.querySelector(".category").textContent;
+        modal.style.display = "flex";
+
+        modal.querySelector("h2").textContent = "Edit Habit";
+       document.getElementById("submit-btn").textContent = "Edit";
+
+    }
+});
+
+habitContainer.addEventListener("click", (e)=>{
+  if(e.target.classList.contains("day")){
+     e.target.classList.toggle("completed");
+     updateProgress(e.target.closest(".habit-card"));
+  }
+})
+
+function updateProgress(card){
+   const days = card.querySelectorAll(".day");
+   const completed = card.querySelectorAll(".day.completed"); 
+   const progress = card.querySelector(".progress");
+
+   progress.style.width = `${(completed.length / days.length) * 100}%`;
+
+   card.querySelector(".streak").textContent = `Streak : ${completed.length}`;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
