@@ -85,9 +85,9 @@
   --heading-shadow-dark: #222;
   --heading-shadow-mid: #444;
 
-  --habit-name: #cbcbcb;
+  --habit-name: #f6f6f6;
   --label-text: #555;
-  --sub-heading: #8c6f20;
+  --sub-heading: #caa235;
   --streak-color: #b22222;
 
   /* Habit card shadows */
@@ -212,6 +212,7 @@ main {
   justify-content: space-between;
 }
 .day {
+  cursor: pointer;
   font-weight: bolder;
   border: none;
   background-color: var(--day-bg);
@@ -254,6 +255,7 @@ main {
   border: none;
 }
 .edit:hover {
+  cursor: pointer;
   background-color: var(--btn-edit-hover);
 }
 .delete {
@@ -264,6 +266,7 @@ main {
   border: none;
 }
 .delete:hover {
+  cursor: pointer;
   background-color: var(--btn-delete-hover);
 }
 #toggle-btn {
@@ -271,6 +274,7 @@ main {
   bottom: 5px;
   left: 15px;
   position: fixed;
+  transition: all 2s ease;;
 }
 
 .modals {
@@ -354,3 +358,139 @@ main {
   background-color: var(--text-color);
   color: var(--bg-color);
 }
+
+/* =========================
+   RESPONSIVE FIX (NO WRAPPING)
+   ========================= */
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 3rem;
+  }
+  header .sub-heading {
+    font-size: 1.2rem;
+  }
+
+  .habit-container {
+    width: 95%;
+    margin-top: 2rem;
+  }
+
+  .habit-card {
+    min-height: 140px;
+    padding: 0.8rem 1rem;
+  }
+
+  .habit-top h3 {
+    font-size: 1.4rem;
+  }
+
+  .category {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+
+  .day {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+  }
+
+  .edit, .delete {
+    padding: 3px 10px;
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 4rem;
+  }
+  header .sub-heading {
+    font-size: 1.22rem;
+  }
+
+  #add-btn {
+    padding: 6px 40px;
+    font-size: 0.8rem;
+  }
+
+  .habit-card {
+    min-height: 120px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 12px;
+  }
+
+  .habit-top h3 {
+    font-size: 1.2rem;
+  }
+
+  .category {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .habit-days {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .day {
+    padding: 5px 9px;
+    font-size: 0.7rem;
+  }
+
+  .streak {
+    font-size: 0.8rem;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .edit, .delete {
+    padding: 0px 13px;
+    font-size: 0.01rem;
+  }
+  .actions img{
+    width: 18px;
+  }
+ .habit-form{
+  width: 80%;
+ }
+
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+
+  #habit-form input,
+  #habit-form select {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  #habit-form button {
+    width: 40%;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  /* Floating Add button */
+  #add-btn.floating {
+    padding: 4px 18px;
+    border-radius: 12px;
+  }
+  #add-btn.floating img {
+    width: 30px;
+  }
+}
+
+
+
+
+
+
