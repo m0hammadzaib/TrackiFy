@@ -1,175 +1,279 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family:  "Lilita One", sans-serif;
-    background-color: #252525;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
+:root {
+  /* Base */
+  --bg-color: #252525;
+  --text-color: white;
+
+  /* Cards & Containers */
+  --card-bg: #222222;
+  --modal-bg: #2b2b2b;
+  --input-bg: #1e1e1e;
+
+  /* Buttons */
+  --btn-purple: #582984;
+  --btn-purple-hover: #492669;
+  --btn-accent: #7a42f4;
+  --btn-accent-hover: #5e32bd;
+
+  --btn-edit: #f4c542;
+  --btn-edit-hover: #c59e34;
+  --btn-delete: #e53935;
+  --btn-delete-hover: #ba2c2a;
+
+  /* Days & Progress */
+  --day-bg: #3a3a3a;
+  --day-text: #dbdbdb;
+  --progress-bg: #777777;
+  --progress-fill: #00afaf;
+
+  /* Typography */
+  --heading-gradient-top: #ddd;
+  --heading-gradient-bottom: #555;
+  --heading-shadow-light: #b4b4b4;
+  --heading-shadow-dark: #3e3e3e;
+  --heading-shadow-mid: #4a4a4a;
+
+  --habit-name: #c9c9c9;
+  --label-text: #aaa;
+  --sub-heading: #D7CA77;
+  --streak-color: #6d1515;
+
+  /* Habit card shadows */
+  --card-shadow-1: 1px 1px 2px #000000;
+  --card-shadow-2: -1px 1px 1px #1e1e1e;
+  --card-shadow-3: -1px 1px 1px #696969;
+  --card-shadow-4: -1px 1px 4px #1a1a1a;
 }
- body, button , input, select{
-    transition: all 0.3s ease;
- }
 
- header{
-   text-align: center;
-    margin: 0.5rem 0;
- }
+:root.light-theme {
+  /* Base */
+  --bg-color: #dddddd;
+  --text-color: #111;
 
-  header h1 {
-    margin-top: 10px;
-    line-height: 0.7;
-    font-size: 4.7rem;
-    font-weight: lighter ;
-    color: rgb(132, 132, 132); 
+  /* Cards & Containers */
+  --card-bg: #ffffff;
+  --modal-bg: #f3f3f3;
+  --modal-text: grey;
+  --input-bg: #ffffff;
 
-background: linear-gradient(to bottom, #ddd, #555);
+  /* Buttons */
+  --btn-purple: #6a0dad;
+  --btn-purple-hover: #520b85;
+  --btn-accent: #6a0dad;
+  --btn-accent-hover: #520b85;
+
+  --btn-edit: #f4c542;
+  --btn-edit-hover: #c59e34;
+  --btn-delete: #e53935;
+  --btn-delete-hover: #ba2c2a;
+
+  /* Days & Progress */
+  --day-bg: #e0e0e0;
+  --day-text: #222;
+  --progress-bg: #cccccc;
+  --progress-fill:  #00afaf;
+
+  /* Typography */
+  --heading-gradient-top: #cbafaf;
+  --heading-gradient-bottom: #222;
+  --heading-shadow-light: #bbb;
+  --heading-shadow-dark: #222;
+  --heading-shadow-mid: #444;
+
+  --habit-name: #cbcbcb;
+  --label-text: #555;
+  --sub-heading: #8c6f20;
+  --streak-color: #b22222;
+
+  /* Habit card shadows */
+  --card-shadow-1: 1px 1px 3px #e0e0e0;
+  --card-shadow-2: -1px 1px 2px #d6d6d6;
+  --card-shadow-3: -1px 1px 2px #c0c0c0;
+  --card-shadow-4: -1px 1px 6px #b5b5b5;
+}
+
+
+body {
+  font-family: "Lilita One", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body, button, input, select {
+  transition: all 0.3s ease;
+}
+
+header {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+header h1 {
+  margin-top: 10px;
+  line-height: 0.7;
+  font-size: 4.7rem;
+  font-weight: lighter;
+
+  background: linear-gradient(to bottom, var(--heading-gradient-top), var(--heading-gradient-bottom));
   color: transparent;
   background-clip: text;
-  text-shadow: 
-      -1px -1px 0 #b4b4b4,
-     1px -1px 0 #3e3e3e,
-    -1px  1px 0 #4a4a4a,
-     1px  1px 0 #4a4a4a,
-     
+  text-shadow:
+    -1px -1px 0 var(--heading-shadow-light),
+     1px -1px 0 var(--heading-shadow-dark),
+    -1px  1px 0 var(--heading-shadow-mid),
+     1px  1px 0 var(--heading-shadow-mid),
      2px  1px 2px rgba(62, 62, 62, 0.7);
-  }
-  header .sub-heading{
-    font-family: "Kalam", cursive;
-    font-size: 1.6rem;
-    color: #D7CA77;
-  }
-  main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-#add-btn{
+}
+header .sub-heading {
+  font-family: "Kalam", cursive;
+  font-size: 1.6rem;
+  color: var(--sub-heading);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-btn {
   margin-top: 100px;
   padding: 7px 55px;
-  border: none;
-  background-color: #582984;
   border-radius: 30px;
+  border: none;
+  background-color: var(--btn-purple);
   cursor: pointer;
   box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
 }
-#add-btn:hover{
-  background-color:#492669;
+#add-btn:hover {
+  background-color: var(--btn-purple-hover);
 }
 
-.habit-container{
+.habit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   width: 85%;
-  max-width: 800px; 
-  margin-top: 2rem;
+  max-width: 800px;
+  margin-top: 4rem;
 }
+
 .habit-card {
   width: 100%;
-  background: #222222;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 1rem 1.4rem;
-  box-shadow: 1px 1px 2px #000000,
-   -1px 1px 1px #1e1e1e,
-   -1px 1px 1px #696969,
-   -1px 1px 4px #1a1a1a;
+  box-shadow: var(--card-shadow-1),
+              var(--card-shadow-2),
+              var(--card-shadow-3),
+              var(--card-shadow-4);
   min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.habit-top{
+
+.habit-top {
   gap: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.habit-top h3{
+.habit-top h3 {
   flex-shrink: 0;
-  color: #c9c9c9;
+  color: var(--habit-name);
   font-size: 2rem;
-   text-shadow: 
-      -1px -1px 0 #131313,
+  text-shadow:
+    -1px -1px 0 #131313,
      1px -1px 0 #4f4f4f,
     -1px  1px 1px #242424,
      1px  1px 1px #030303,
-     
      2px  1px 2px rgba(0, 0, 0, 0.7);
-
 }
-.category{
+.category {
+  color: white;
   flex-shrink: 0;
   font-size: 0.8rem;
-  background-color: blue;
-  padding: 3px 10px ;
+  background-color: blue; 
+  padding: 3px 10px;
   border-radius: 20px;
 }
-.habit-days{
+
+.habit-days {
   display: flex;
   justify-content: space-between;
 }
-.day{
+.day {
   font-weight: bolder;
   border: none;
-  background-color: #3a3a3a;
-  padding: 8px  12px;
+  background-color: var(--day-bg);
+  padding: 8px 12px;
   border-radius: 5px;
-  color: rgb(219, 219, 219);
+  color: var(--day-text);
 }
-.progress-bar{
-  background-color: #777777;
+.progress-bar {
+  background-color: var(--progress-bg);
   width: 100%;
   height: 8px;
   border-radius: 10px;
 }
-.progress{
-   background-color: #00afaf;
-  width: 40%;
+.progress {
+  background-color: var(--progress-fill);
+  width: 0%;
   height: 8px;
   border-radius: 10px;
+  transition: all 3s ease-in-out;
 }
-.habit-bottom{
+
+.habit-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.streak{
-  color: rgb(109, 21, 21);
+.streak {
+  color: var(--streak-color);
 }
-.actions{
+.actions {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.edit{
-  background-color: #f4c542;
-  color: white;
+.edit {
+  background-color: var(--btn-edit);
+  color: var(--text-color);
   border-radius: 14px;
   padding: 1px 17px;
   border: none;
 }
-.delete{
-  background-color: #e53935;
-  color: white;
+.edit:hover {
+  background-color: var(--btn-edit-hover);
+}
+.delete {
+  background-color: var(--btn-delete);
+  color: var(--text-color);
   border-radius: 14px;
   padding: 1px 17px;
   border: none;
 }
-#toggle-btn{
- border-radius: 40px;
- bottom: 5px;
- left: 15px;
- position: fixed;
+.delete:hover {
+  background-color: var(--btn-delete-hover);
 }
-.modals{
+#toggle-btn {
+  border-radius: 40px;
+  bottom: 5px;
+  left: 15px;
+  position: fixed;
+}
+
+.modals {
   position: fixed;
   top: 0;
   left: 0;
@@ -180,23 +284,24 @@ background: linear-gradient(to bottom, #ddd, #555);
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
+  display: none;
 }
-.modal-content{
-  background-color: #2b2b2b;
+.modal-content {
+  background-color: var(--modal-bg);
   padding: 1rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
   width: 350px;
   text-align: center;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--day-bg);
 }
 .modal-content h2 {
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
-  color: #fff;
+  color: var(--modal-text, #fff);
   font-weight: bold;
 }
-#habit-form{
+#habit-form {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -204,48 +309,48 @@ background: linear-gradient(to bottom, #ddd, #555);
 }
 #habit-form label {
   font-size: 0.9rem;
-  color: #aaa; 
+  color: var(--label-text);
 }
 #habit-form input,
 #habit-form select {
   padding: 0.7rem;
   border-radius: 10px;
   border: 1px solid #555;
-  background: #1e1e1e;
-  color: white;
+  background: var(--input-bg);
+  color: var(--text-color);
   font-size: 1rem;
   outline: none;
 }
 #habit-form button {
   align-self: center;
   margin-top: 1rem;
-  background: #7a42f4;
+  background: var(--btn-accent);
   border: none;
   padding: 0.8rem;
   border-radius: 12px;
-  color: white;
+  color: var(--text-color);
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   width: 40%;
 }
 #habit-form button:hover {
-  background: #5e32bd; 
+  background: var(--btn-accent-hover);
 }
 
 /* for floating add button */
-
 #add-btn.floating {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  margin: 0;   
-  padding: 18px 24px;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  bottom: 10px;
+  right: 15px;
+  margin: 0;
+  padding: 5px 30px;
+  border-radius: 20px;
 }
-
-
-  
-
+#add-btn.floating img {
+  width: 45px;
+}
+.day.completed {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}

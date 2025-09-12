@@ -1,4 +1,4 @@
-// selectors
+// --------------------- SELECTORS ---------------------
 const addBtn = document.getElementById("add-btn");
 const modal = document.querySelector(".modals");
 const modalContent = document.querySelector(".modal-content");
@@ -7,15 +7,21 @@ const habitNameInput = document.getElementById("habit-name");
 const habitContainer = document.querySelector(".habit-container");
 const addlabel = document.getElementById("label1");
 const categorySelect = document.getElementById("category");
+const toggleBtn = document.getElementById("toggle-btn");
 
 let editingCard = null;
 
-// LocalStorage setup
 
+// -------------------Toggle-theme-----------------------
+
+document.getElementById("toggle-btn").addEventListener("click", () => {
+  document.documentElement.classList.toggle("light-theme");
+});
+
+
+// --------------------- LOCAL STORAGE ---------------------
 const storageKey = "trackify001";
 let habits = [];
-
-// --------------------- STORAGE FUNCTIONS ---------------------
 
 function savehabits() {
   localStorage.setItem(storageKey, JSON.stringify(habits));
@@ -31,7 +37,6 @@ function loadhabits() {
 }
 
 // --------------------- UI FUNCTIONS ---------------------
-
 function checkHabits() {
   if (habitContainer.children.length === 0) {
     addBtn.classList.remove("floating");
@@ -50,13 +55,14 @@ function createhabitcard(habit) {
         <span class="category">${habit.category}</span>
       </div>
       <div class="habit-days">
-        <button class="day">M</button>
-        <button class="day">T</button>
-        <button class="day">W</button>
-        <button class="day">T</button>
-        <button class="day">F</button>
-        <button class="day">S</button>
-        <button class="day">S</button>
+        ${habit.days
+          .map(
+            (done, i) => `
+          <button class="day ${done ? "completed" : ""}" data-index="${i}">
+            ${["M", "T", "W", "T", "F", "S", "S"][i]}
+          </button>`
+          )
+          .join("")}
       </div>
       <div class="progress-bar">
         <div class="progress"></div>
@@ -71,17 +77,20 @@ function createhabitcard(habit) {
     </div>`;
 
   habitContainer.insertAdjacentHTML("beforeend", html);
+
+  const card = habitContainer.lastElementChild;
+  updateProgress(card);
+
   checkHabits();
 }
 
 // --------------------- EVENT HANDLERS ---------------------
-
-// open modal
 addBtn.addEventListener("click", () => {
   modal.style.display = "flex";
+  modal.querySelector("h2").textContent = "Add Habit";
+  document.getElementById("submit-btn").textContent = "Add";
 });
 
-// form submit (add or edit habit)
 habitForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -91,7 +100,6 @@ habitForm.addEventListener("submit", (e) => {
   if (name === "") return;
 
   if (editingCard) {
-    // update existing card
     const id = editingCard.dataset.id;
     const habit = habits.find((h) => h.id === id);
     habit.name = name;
@@ -100,9 +108,8 @@ habitForm.addEventListener("submit", (e) => {
     editingCard.querySelector("h3").textContent = name;
     editingCard.querySelector(".category").textContent = category;
 
-    editingCard = null; // reset editing
+    editingCard = null;
   } else {
-    // create new habit
     const habit = {
       id: Date.now().toString(),
       name: name,
@@ -120,7 +127,6 @@ habitForm.addEventListener("submit", (e) => {
   checkHabits();
 });
 
-// edit / delete
 habitContainer.addEventListener("click", (e) => {
   const card = e.target.closest(".habit-card");
   if (!card) return;
@@ -138,20 +144,42 @@ habitContainer.addEventListener("click", (e) => {
     categorySelect.value = card.querySelector(".category").textContent;
     modal.style.display = "flex";
 
-   modal.querySelector("h2").textContent = "Edit Habit";
-   document.getElementById("submit-btn").textContent = "Edit";
+    modal.querySelector("h2").textContent = "Edit Habit";
+    document.getElementById("submit-btn").textContent = "Edit";
   }
-
-
 });
 
-// day click
+// day toggle
 habitContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("day")) {
+    const card = e.target.closest(".habit-card");
+    const id = card.dataset.id;
+    const habit = habits.find((h) => h.id === id);
+
+    const index = e.target.dataset.index;
+    habit.days[index] = !habit.days[index];
+
     e.target.classList.toggle("completed");
-    updateProgress(e.target.closest(".habit-card"));
+    updateProgress(card);
+
+    savehabits();
   }
 });
+
+// --------------------- HELPERS ---------------------
+// ✅ new function: calculate continuous streak
+
+function getStreak(days) {
+  let streak = 0;
+  for (let i = 0; i < days.length; i++) {
+    if (days[i]) {
+      streak++;
+    } else {
+      break; // stop streak when a day is missed
+    }
+  }
+  return streak;
+}
 
 function updateProgress(card) {
   const days = card.querySelectorAll(".day");
@@ -159,11 +187,16 @@ function updateProgress(card) {
   const progress = card.querySelector(".progress");
 
   progress.style.width = `${(completed.length / days.length) * 100}%`;
-  card.querySelector(".streak").textContent = `Streak : ${completed.length}`;
+
+  const id = card.dataset.id;
+  const habit = habits.find((h) => h.id === id);
+
+  // ✅ streak now uses continuous streak function
+  const streakCount = getStreak(habit.days);
+  card.querySelector(".streak").textContent = `Streak : ${streakCount}`;
 }
 
 // --------------------- INIT ---------------------
-
 loadhabits();
 habits.forEach((habit) => createhabitcard(habit));
 checkHabits();

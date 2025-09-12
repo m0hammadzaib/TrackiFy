@@ -23,41 +23,9 @@
     <main>
 
         <button id="add-btn"><img width="65" src="plus.png" alt=""></button>
-        <label for="add-btn">Add Habit</label>
+        <label id="label1" for="add-btn">Add Habit</label>
 
         <div class="habit-container">
-            <div class="habit-card">
-                <div class="habit-top">
-                    <h3>Drink Water</h3>
-                    <span class="category">Health</span>
-                </div>
-                <div class="habit-days">
-                    <button class="day" >M</button>
-                    <button class="day" >T</button>
-                    <button class="day" >W</button>
-                    <button class="day" >T</button>
-                    <button class="day" >F</button>
-                    <button class="day" >S</button>
-                    <button class="day" >S</button>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress">
-                    </div>
-                </div>
-                        
-                        <div class="habit-bottom">
-                            <span class="streak">Streak :</span>
-                            <div class="actions">
-                                <button class="edit"><img width="25" src="edit.png" alt=""></button>
-                                <button class="delete"><img width="25"  src="delete.png" alt=""></button>
-                    </div>
-
-                </div>
-
-
-            </div>
-
         </div>
     </main>
 
@@ -74,14 +42,14 @@
                     <option value="Study">Study</option>
                     <option value="Personal">Personal</option>
                 </select>
-                <button type="submit">Add</button>
+                <button id="submit-btn" type="submit">Add</button>
             </form>
         </div>
     </div>
 
    <span id="toggle-btn"><img width="60" src="switch.png" alt=""></span>
 
-
+<script src="script.js"></script>
 </body>
 
 </html>
