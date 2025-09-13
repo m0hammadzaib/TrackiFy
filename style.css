@@ -360,53 +360,10 @@ main {
 }
 
 /* =========================
-   RESPONSIVE FIX (NO WRAPPING)
+   RESPONSIVE (NO WRAPPING)
    ========================= */
 
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 3rem;
-  }
-  header .sub-heading {
-    font-size: 1.2rem;
-  }
-
-  .habit-container {
-    width: 95%;
-    margin-top: 2rem;
-  }
-
-  .habit-card {
-    min-height: 140px;
-    padding: 0.8rem 1rem;
-  }
-
-  .habit-top h3 {
-    font-size: 1.4rem;
-  }
-
-  .category {
-    font-size: 0.7rem;
-    padding: 2px 6px;
-  }
-
-  .day {
-    padding: 5px 8px;
-    font-size: 0.75rem;
-  }
-
-  .edit, .delete {
-    padding: 3px 10px;
-    font-size: 0.8rem;
-  }
-
-  .modal-content {
-    width: 90%;
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
   header h1 {
     font-size: 4rem;
   }
@@ -459,24 +416,21 @@ main {
   .actions img{
     width: 18px;
   }
- .habit-form{
-  width: 80%;
- }
 
   .modal-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   #habit-form input,
   #habit-form select {
     font-size: 0.85rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   #habit-form button {
-    width: 40%;
+    width: 30%;
     font-size: 0.9rem;
-    padding: 0.6rem;
+    padding: 0.8rem;
   }
 
   /* Floating Add button */

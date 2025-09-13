@@ -8,15 +8,42 @@ const habitContainer = document.querySelector(".habit-container");
 const addlabel = document.getElementById("label1");
 const categorySelect = document.getElementById("category");
 const toggleBtn = document.getElementById("toggle-btn");
+const img = toggleBtn.querySelector("img");
+
+const lighttoggle = "switch2.png";
+const darktoggle = "switch.png";
+
 
 let editingCard = null;
 
 
 // -------------------Toggle-theme-----------------------
 
-document.getElementById("toggle-btn").addEventListener("click", () => {
+toggleBtn.addEventListener("click", () => {
   document.documentElement.classList.toggle("light-theme");
+
+  if (document.documentElement.classList.contains("light-theme")) {
+    localStorage.setItem("theme", "light");
+    img.src = lighttoggle; // change to light icon
+  } else {
+    localStorage.setItem("theme", "dark");
+    img.src = darktoggle; // change to dark icon
+  }
 });
+
+// set initial theme + icon on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light") {
+    document.documentElement.classList.add("light-theme");
+    img.src = lighttoggle; // light icon
+  } else {
+    img.src = darktoggle; // dark icon
+  }
+});
+
+
 
 
 // --------------------- LOCAL STORAGE ---------------------
@@ -83,6 +110,15 @@ function createhabitcard(habit) {
 
   checkHabits();
 }
+
+modal.addEventListener("click",(e)=>{
+  e.stopPropagation();
+     modal.style.display = "none"
+})
+modalContent.addEventListener("click",(e)=>{
+  e.stopPropagation();
+     modal.style.display = "flex"
+})
 
 // --------------------- EVENT HANDLERS ---------------------
 addBtn.addEventListener("click", () => {
