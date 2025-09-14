@@ -24,24 +24,23 @@ toggleBtn.addEventListener("click", () => {
 
   if (document.documentElement.classList.contains("light-theme")) {
     localStorage.setItem("theme", "light");
-    img.src = lighttoggle; // change to light icon
+    img.src = lighttoggle; 
   } else {
     localStorage.setItem("theme", "dark");
-    img.src = darktoggle; // change to dark icon
+    img.src = darktoggle; 
   }
 });
 
 // set initial theme + icon on page load
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
+const savedTheme = localStorage.getItem("theme");
 
-  if (savedTheme === "light") {
-    document.documentElement.classList.add("light-theme");
-    img.src = lighttoggle; // light icon
-  } else {
-    img.src = darktoggle; // dark icon
-  }
-});
+if (savedTheme === "light") {
+  document.documentElement.classList.add("light-theme");
+  img.src = lighttoggle; 
+} else {
+  img.src = darktoggle; 
+}
+
 
 
 
