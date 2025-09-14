@@ -9,6 +9,7 @@ const addlabel = document.getElementById("label1");
 const categorySelect = document.getElementById("category");
 const toggleBtn = document.getElementById("toggle-btn");
 const img = toggleBtn.querySelector("img");
+ 
 
 const lighttoggle = "switch2.png";
 const darktoggle = "switch.png";
@@ -49,7 +50,7 @@ if (savedTheme === "light") {
 const storageKey = "trackify001";
 let habits = [];
 
-function savehabits() {
+function savehabits() { 
   localStorage.setItem(storageKey, JSON.stringify(habits));
 }
 
@@ -81,14 +82,13 @@ function createhabitcard(habit) {
         <span class="category">${habit.category}</span>
       </div>
       <div class="habit-days">
-        ${habit.days
-          .map(
-            (done, i) => `
-          <button class="day ${done ? "completed" : ""}" data-index="${i}">
-            ${["M", "T", "W", "T", "F", "S", "S"][i]}
-          </button>`
-          )
-          .join("")}
+  <button class="day" data-index="0">M</button>
+  <button class="day" data-index="1">T</button>
+  <button class="day" data-index="2">W</button>
+  <button class="day" data-index="3">T</button>
+  <button class="day" data-index="4">F</button>
+  <button class="day" data-index="5">S</button>
+  <button class="day" data-index="6">S</button>
       </div>
       <div class="progress-bar">
         <div class="progress"></div>
@@ -104,11 +104,26 @@ function createhabitcard(habit) {
 
   habitContainer.insertAdjacentHTML("beforeend", html);
 
+ 
+
   const card = habitContainer.lastElementChild;
   updateProgress(card);
 
   checkHabits();
+
+const daysButtons = card.querySelectorAll(".day");  
+
+daysButtons.forEach((btn, i) => {
+  if (habit.days[i]) {
+    btn.classList.add("completed");
+  } else {
+    btn.classList.remove("completed");
+  }
+});
+
 }
+
+// For exiting the modal card by clicking outside the modal 
 
 modal.addEventListener("click",(e)=>{
   e.stopPropagation();
@@ -192,6 +207,7 @@ habitContainer.addEventListener("click", (e) => {
     const habit = habits.find((h) => h.id === id);
 
     const index = e.target.dataset.index;
+
     habit.days[index] = !habit.days[index];
 
     e.target.classList.toggle("completed");
