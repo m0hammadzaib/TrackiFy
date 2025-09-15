@@ -24,7 +24,7 @@ TrackiFy is a clean, responsive, and fully functional **Habit Tracker Web App** 
 
 ## 📸 Demo 
 
---- <img src="GIF/TrackiFy.gif" width="600">
+--- ![Demo](GIF/TrackiFy.gif)
 
 
 ## 🛠️ Tech Stack  
