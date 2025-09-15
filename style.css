@@ -110,11 +110,33 @@ body, button, input, select {
 }
 
 header {
-  top: 0;
-  position: sticky;
   z-index: 1000;
   text-align: center;
   margin: 0.5rem 0;
+}
+.mini-nav{
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  z-index: 1100;
+
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.8rem 0;
+
+  background: rgba(23, 23, 23, 0.95); /* dark glassy bg so it’s visible on scroll */
+  color: white;
+  letter-spacing: 1px;
+
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.mini-nav.show {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 header h1 {

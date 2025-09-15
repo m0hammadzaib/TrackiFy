@@ -9,6 +9,8 @@ const addlabel = document.getElementById("label1");
 const categorySelect = document.getElementById("category");
 const toggleBtn = document.getElementById("toggle-btn");
 const img = toggleBtn.querySelector("img");
+const header = document.querySelector("header");
+const miniNave =document.querySelector(".mini-nav");
  
 
 const lighttoggle = "assets/switch2.png";
@@ -16,6 +18,18 @@ const darktoggle = "assets/switch.png";
 
 
 let editingCard = null;
+
+
+// --------------------Mini-NavBar-Displaying------------------
+
+window.addEventListener("scroll",()=>{
+  headerHeight = header.offsetHeight;
+  if(window.scrollY > headerHeight){
+    miniNave.classList.add("show")
+  }else{
+      miniNave.classList.remove("show")
+  }
+})
 
 
 // -------------------Toggle-theme-----------------------
