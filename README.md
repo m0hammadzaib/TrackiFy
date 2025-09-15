@@ -24,8 +24,6 @@ TrackiFy is a clean, responsive, and fully functional **Habit Tracker Web App** 
 
 ## 📸 Screenshots  
 
-👉 *()*  
-
 ---
 
 ## 🛠️ Tech Stack  
@@ -46,12 +44,3 @@ While building TrackiFy, I improved my skills in:
 - 📊 Implementing **streak & progress logic**  
 - 🎨 Using **CSS variables** for theme switching  
 - 📱 Making apps **responsive & user-friendly**  
-
----
-
-## 🚀 Getting Started  
-
-Clone the repo:  
-
-```bash
-git clone https://github.com/m0hammadzaib/TrackiFy.git
