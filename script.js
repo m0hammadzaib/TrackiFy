@@ -11,8 +11,8 @@ const toggleBtn = document.getElementById("toggle-btn");
 const img = toggleBtn.querySelector("img");
  
 
-const lighttoggle = "switch2.png";
-const darktoggle = "switch.png";
+const lighttoggle = "assets/switch2.png";
+const darktoggle = "assets/switch.png";
 
 
 let editingCard = null;
@@ -96,8 +96,8 @@ function createhabitcard(habit) {
       <div class="habit-bottom">
         <span class="streak">Streak : 0</span>
         <div class="actions">
-          <button class="edit"><img width="25" src="edit.png" alt=""></button>
-          <button class="delete"><img width="25" src="delete.png" alt=""></button>
+          <button class="edit"><img width="25" src="assets/edit.png" alt=""></button>
+          <button class="delete"><img width="25" src="assets/delete.png" alt=""></button>
         </div>
       </div>
     </div>`;
@@ -226,7 +226,7 @@ function getStreak(days) {
     if (days[i]) {
       streak++;
     } else {
-      break; // stop streak when a day is missed
+      break; 
     }
   }
   return streak;
@@ -247,7 +247,9 @@ function updateProgress(card) {
   card.querySelector(".streak").textContent = `Streak : ${streakCount}`;
 }
 
-// --------------------- INIT ---------------------
+
 loadhabits();
+
 habits.forEach((habit) => createhabitcard(habit));
+
 checkHabits();

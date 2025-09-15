@@ -91,7 +91,6 @@
   --streak-color: #b22222;
 
   /* Habit card shadows */
-  --card-shadow-1: 1px 1px 3px #e0e0e0;
   --card-shadow-2: -1px 1px 2px #d6d6d6;
   --card-shadow-3: -1px 1px 2px #c0c0c0;
   --card-shadow-4: -1px 1px 6px #b5b5b5;
@@ -111,6 +110,9 @@ body, button, input, select {
 }
 
 header {
+  top: 0;
+  position: sticky;
+  z-index: 1000;
   text-align: center;
   margin: 0.5rem 0;
 }
