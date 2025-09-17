@@ -5,16 +5,16 @@
 }
 
 :root {
-  /* Base */
+  
   --bg-color: #252525;
   --text-color: white;
 
-  /* Cards & Containers */
+  
   --card-bg: #222222;
   --modal-bg: #2b2b2b;
   --input-bg: #1e1e1e;
 
-  /* Buttons */
+  
   --btn-purple: #582984;
   --btn-purple-hover: #492669;
   --btn-accent: #7a42f4;
@@ -25,13 +25,13 @@
   --btn-delete: #e53935;
   --btn-delete-hover: #ba2c2a;
 
-  /* Days & Progress */
+
   --day-bg: #3a3a3a;
   --day-text: #dbdbdb;
   --progress-bg: #777777;
   --progress-fill: #00afaf;
 
-  /* Typography */
+  
   --heading-gradient-top: #ddd;
   --heading-gradient-bottom: #555;
   --heading-shadow-light: #b4b4b4;
@@ -43,7 +43,7 @@
   --sub-heading: #D7CA77;
   --streak-color: #6d1515;
 
-  /* Habit card shadows */
+  
   --card-shadow-1: 1px 1px 2px #000000;
   --card-shadow-2: -1px 1px 1px #1e1e1e;
   --card-shadow-3: -1px 1px 1px #696969;
@@ -51,17 +51,16 @@
 }
 
 :root.light-theme {
-  /* Base */
+  
   --bg-color: #dddddd;
   --text-color: #111;
 
-  /* Cards & Containers */
+
   --card-bg: #ffffff;
   --modal-bg: #f3f3f3;
   --modal-text: grey;
   --input-bg: #ffffff;
 
-  /* Buttons */
   --btn-purple: #6a0dad;
   --btn-purple-hover: #520b85;
   --btn-accent: #6a0dad;
@@ -72,13 +71,13 @@
   --btn-delete: #e53935;
   --btn-delete-hover: #ba2c2a;
 
-  /* Days & Progress */
+  
   --day-bg: #e0e0e0;
   --day-text: #222;
   --progress-bg: #cccccc;
   --progress-fill:  #00afaf;
 
-  /* Typography */
+  
   --heading-gradient-top: #cbafaf;
   --heading-gradient-bottom: #222;
   --heading-shadow-light: #bbb;
@@ -90,7 +89,7 @@
   --sub-heading: #caa235;
   --streak-color: #b22222;
 
-  /* Habit card shadows */
+  
   --card-shadow-2: -1px 1px 2px #d6d6d6;
   --card-shadow-3: -1px 1px 2px #c0c0c0;
   --card-shadow-4: -1px 1px 6px #b5b5b5;
@@ -126,7 +125,7 @@ header {
   text-align: center;
   padding: 0.8rem 0;
 
-  background: rgba(23, 23, 23, 0.95); /* dark glassy bg so it’s visible on scroll */
+  background: rgba(23, 23, 23, 0.95); 
   color: white;
   letter-spacing: 1px;
 
@@ -367,7 +366,6 @@ main {
   background: var(--btn-accent-hover);
 }
 
-/* for floating add button */
 #add-btn.floating {
   position: fixed;
   bottom: 10px;
@@ -383,10 +381,6 @@ main {
   background-color: var(--text-color);
   color: var(--bg-color);
 }
-
-/* =========================
-   RESPONSIVE (NO WRAPPING)
-   ========================= */
 
 @media (max-width: 768px) {
   header h1 {
@@ -457,8 +451,7 @@ main {
     font-size: 0.9rem;
     padding: 0.8rem;
   }
-
-  /* Floating Add button */
+  
   #add-btn.floating {
     padding: 4px 18px;
     border-radius: 12px;
@@ -467,6 +460,7 @@ main {
     width: 30px;
   }
 }
+
 
 
 
